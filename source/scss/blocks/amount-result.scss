@@ -1,0 +1,41 @@
+.amount-result__wrapper {
+  padding-top: 16px;
+}
+
+.amount-result__text {
+  @include reset-text;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.amount-result__calculation-list {
+  @include reset-list;
+  margin-bottom: 26px;
+}
+
+.amount-result__calculation {
+  @include reset-text;
+  margin-bottom: 8px;
+  color: $dark-pink;
+  font-size: 18px;
+}
+
+.amount-result__description {
+  @include reset-text;
+  display: flex;
+  font-size: 14px;
+}
+
+.amount-result__detailed-description {
+  @include reset-button;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background-color: $light-pink;
+  font-size: 13px;
+  color: $dark-pink;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}

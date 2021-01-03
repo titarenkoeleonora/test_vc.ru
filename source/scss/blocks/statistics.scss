@@ -1,0 +1,24 @@
+.statistics {
+  background-color: $light-pink;
+}
+
+.statistics__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+}
+
+.statistics__open-button {
+  @include reset-button;
+  margin-bottom: 24px;
+  color: $dark-pink;
+  font-size: 14px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 4px;
+    background-image: url("../../images/vector.svg");
+  }
+}

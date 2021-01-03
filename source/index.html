@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>test vc.ru</title>
+  </head>
+  <body>
+    <main>
+      <section class="amount-choice">
+        <h2 class="visually-hidden">Выбор суммы накоплений.</h2>
+        <div class="container">
+          <div class="amount-choice__wrapper">
+            <p class="amount-choice__title">
+              Сколько денег вы откладываете в месяц?
+            </p>
+            <p class="amount-choice__text">
+              Ответьте и узнаете, сколько копят другие.
+            </p>
+            <div class="amount-choice__input-wrapper">
+              <p class="amount-choice__input-min">0&nbsp;&#8381;</p>
+              <input
+                class="amount-choice__input"
+                type="range"
+                min="0"
+                max="50000"
+              />
+              <p class="amount-choice__input-max">50&nbsp;000&nbsp;&#8381;</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="amount-result">
+        <h2 class="visually-hidden">Расчет заработка.</h2>
+        <div class="container">
+          <div class="amount-result__wrapper">
+            <p class="amount-result__text">
+              Вы откладываете 8 888 ₽ в месяц.<br>
+              За три года вы бы заработали:
+            </p>
+            <ul class="amount-result__calculation-list">
+              <li class="amount-result__calculation-item">
+                <p class="amount-result__calculation">&#126;319&nbsp;968&nbsp;&#8381;</p>
+                <p class="amount-result__description">
+                  Если откладывать под матрас
+                  <button class="amount-result__detailed-description" type="button" aria-label="Подробнее">?</button>
+                </p>
+              </li>
+              <li class="amount-result__calculation-item">
+                <p class="amount-result__calculation">&#126;366&nbsp;375&nbsp;&#8381;</p>
+                <p class="amount-result__description">
+                  Если откладывать на депозит
+                  <button class="amount-result__detailed-description" type="button" aria-label="Подробнее">?</button>
+                </p>
+              </li>
+              <li class="amount-result__calculation-item">
+                <p class="amount-result__calculation">
+                  до &#126;479&nbsp;634&nbsp;&#8381;
+                </p>
+                <p class="amount-result__description">
+                  Если инвестировать в ПИФ «Альфа-Капитала»
+                  <button class="amount-result__detailed-description" type="button" aria-label="Подробнее">?</button>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="statistics">
+        <h2 class="visually-hidden">Статистика среди читетей vc.ru</h2>
+        <div class="container">
+          <div class="statistics__wrapper">
+            <button
+              class="statistics__open-button"
+              type="button"
+              aria-label="Показать статистику"
+            >
+              А как в среднем у читателей vc.ru?
+            </button>
+            <div class="statistics__average">
+              <div class="statistics__average-wrapper">
+                <p class="statistics__average-value">&#126;15&nbsp;240&nbsp;&#8381;</p>
+                <p class="statistics__average-text">В среднем откладывают читатели vc.ru</p>
+              </div>
+              <div class="statistics__average-wrapper">
+                <p class="statistics__average-value">50%</p>
+                <p class="statistics__average-text">Читателей откладывают больше 1000&nbsp;₽ в месяц</p>
+              </div>
+              <div class="statistics__average-wrapper">
+                <p class="statistics__average-value">7%</p>
+                <p class="statistics__average-text">Читателей откладывают больше 10&nbsp;000&nbsp;₽ в месяц</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="investment-info">
+        <div class="container">
+          <div class="investment-info__wrapper">
+            <h2 class="investment-info__title">Как начать инвестировать?</h2>
+            <a class="investment-info__link" href="https://alfabank.ru/make-money/investments/">Узнать</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -25,6 +25,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+      {
+        test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
@@ -42,11 +47,11 @@ module.exports = {
           },
           {
             loader: "postcss-loader",
-            // options: {
-            //     postcssOptions: {
-            //         plugins: [['autoprefixer']],
-            //     },
-            // },
+            options: {
+                postcssOptions: {
+                    plugins: [['autoprefixer']],
+                },
+            },
           },
           {
             loader: "sass-loader",

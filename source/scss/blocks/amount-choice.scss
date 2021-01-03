@@ -1,0 +1,29 @@
+.amount-choice__wrapper {
+  padding-top: 16px;
+}
+
+.amount-choice__title {
+  @include reset-text;
+  margin-bottom: 11px;
+  font-size: 16px;
+}
+
+.amount-choice__text {
+  @include reset-text;
+  font-size: 14px;
+}
+
+.amount-choice__input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.amount-choice__input-min,
+.amount-choice__input-max {
+  font-size: 14px;
+}
+
+.amount-choice__input {
+  width: 70%;
+}

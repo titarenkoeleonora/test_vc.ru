@@ -1,0 +1,9 @@
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 600px;
+
+  @media (min-width: $tablet) {
+    padding: 0 25px;
+  }
+}
