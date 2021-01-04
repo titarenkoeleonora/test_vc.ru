@@ -35,9 +35,14 @@
 }
 
 .statistics__average {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: none;
+  transition: display 1s;
+
+  &--active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .statistics__average-wrapper {

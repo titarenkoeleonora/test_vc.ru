@@ -1,0 +1,8 @@
+.final-screen {
+  transform: translateY(-1000px);
+  transition: transform 1s;
+
+  &--active {
+    transform: translateY(0px)
+  }
+}

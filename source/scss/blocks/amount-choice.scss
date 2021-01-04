@@ -1,3 +1,9 @@
+.amount-choice {
+  position: relative;
+  z-index: 1;
+  background-color: $white;
+}
+
 .amount-choice__wrapper {
   padding-top: 16px;
 }
