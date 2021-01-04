@@ -1,15 +1,29 @@
 .investment-info__wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  margin-bottom: 25px;
   padding-top: 16px;
+
+  @media (min-width: $tablet) {
+    padding-top: 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
 }
 
 .investment-info__title {
   @include reset-text;
   margin-bottom: 20px;
+  font-family: "Roboto-Medium";
   font-size: 16px;
+
+  @media (min-width: $tablet) {
+    margin-right: 29px;
+    font-size: 16px;
+  }
 }
 
 .investment-info__link {
@@ -17,4 +31,10 @@
   color: $white;
   background-color: $dark-pink;
   border-radius: 5px;
+
+
+  @media (min-width: $tablet) {
+    padding: 12px 41px;
+    font-size: 16px;
+  }
 }

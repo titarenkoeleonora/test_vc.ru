@@ -5,20 +5,105 @@
 .statistics__wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding-top: 24px;
 }
 
 .statistics__open-button {
   @include reset-button;
+  position: relative;
   margin-bottom: 24px;
+  align-self: center;
+  width: max-content;
   color: $dark-pink;
   font-size: 14px;
 
   &::after {
     content: "";
     position: absolute;
+    top: calc(50% - 2px);
+    right: -15px;
     width: 13px;
-    height: 4px;
+    height: 5px;
     background-image: url("../../images/vector.svg");
+    background-size: 13px 5px;
+  }
+
+  @media (min-width: $tablet) {
+    font-size: 16px;
+  }
+}
+
+.statistics__average {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statistics__average-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 297px;
+  margin-bottom: 20px;
+}
+
+.statistics__average-value {
+  @include reset-text;
+  padding-top: 145px;
+  padding-bottom: 28px;
+  margin-bottom: 8px;
+  width: 200px;
+  text-align: center;
+  background-color: #FFF6F8;
+  border-radius: 50%;
+  color: $dark-pink;
+  font-family: "Roboto-Bold";
+  font-size: 18px;
+
+  @media (min-width: $tablet) {
+    font-size: 22px;
+  }
+}
+
+.statistics__average-text {
+  @include reset-text;
+  text-align: center;
+  text-transform: lowercase;
+
+  @media (min-width: $tablet) {
+    font-size: 16px;
+  }
+}
+
+.statistics__percents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (min-width: $tablet) {
+    justify-content: space-between;
+    width: 480px;
+  }
+}
+.statistics__percents-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 190px;
+  margin-bottom: 29px;
+}
+
+.statistics__percents-value {
+  @include reset-text;
+  padding-top: 178px;
+  margin-bottom: 9px;
+  color: $dark-pink;
+  font-family: "Roboto-Bold";
+  font-size: 18px;
+
+  @media (min-width: $tablet) {
+    font-size: 20px;
   }
 }

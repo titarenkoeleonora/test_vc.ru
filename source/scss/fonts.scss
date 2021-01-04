@@ -9,10 +9,19 @@
 }
 
 @font-face {
-  font-family: "Roboto-Light";
-  src: url("../fonts/Roboto-Light.woff2"),
-    url("../fonts/Roboto-Light.woff");
+  font-family: "Roboto-Medium";
+  src: url("../fonts/Roboto-Medium.woff2"),
+    url("../fonts/Roboto-Medium.woff");
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("../fonts/Roboto-Bold.woff2"),
+    url("../fonts/Roboto-Bold.woff");
+  font-style: normal;
+  font-weight: 700;
   font-display: swap;
 }

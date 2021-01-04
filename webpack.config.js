@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -55,9 +56,9 @@ module.exports = {
           },
           {
             loader: "sass-loader",
-          },
+          }
         ],
-      },
+      }
     ],
   },
   plugins: [
@@ -67,5 +68,16 @@ module.exports = {
       template: path.resolve(__dirname, "./source/index.html"),
     }),
     new MiniCssExtractPlugin(),
+    new CopyPlugin({
+      patterns: [{
+        from: './source/fonts',
+        to: './fonts'
+      },
+        {
+          from: './source/images',
+          to: './images'
+        }
+      ],
+    }),
   ],
 };
