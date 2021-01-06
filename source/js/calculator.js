@@ -1,4 +1,4 @@
-import {calculateDeposit} from "./utils";
+import {calculateDeposit, calculateInvestment} from "./utils";
 export default class Calculator {
   constructor(inputRange, amount, inputBubble, amountCalculations, accumulationElement, accumulationDepositElem, accumulationInvestElem) {
     this.inputRange = inputRange;
@@ -26,7 +26,7 @@ export default class Calculator {
   calculate() {
     this.accumulation = 36 * this.inputRange.value;
     this.accumulationDeposit = calculateDeposit(this.inputRange.value);
-    // this.accumulationInvestment = Math.floor(this.inputRange.value + (this.inputRange.value * 0,7121));
+    this.accumulationInvestment = calculateInvestment(this.inputRange.value);
   }
 
   renderInfo() {
@@ -34,6 +34,6 @@ export default class Calculator {
     this.amountText.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.inputRange.value);
     this.accumulationElement.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation);
     this.accumulationDepositElem.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulationDeposit);
-    this.accumulationInvestElem.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation);
+    this.accumulationInvestElem.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulationInvestment);
   }
 }

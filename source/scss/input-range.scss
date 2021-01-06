@@ -13,6 +13,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 input[type="range"]::-webkit-slider-thumb {
   position: relative;
+  z-index: 2;
   appearance:none;
   -webkit-appearance:none;
   top: -8px;

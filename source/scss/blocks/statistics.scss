@@ -68,7 +68,6 @@
   &--active {
     height: auto;
     max-height: 2000px;
-    transform: scaleY(1);
   }
 }
 
@@ -92,6 +91,9 @@
   color: $dark-pink;
   font-family: "Roboto-Bold";
   font-size: 18px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: calc(100% - 60px);
 
   @media (min-width: $tablet) {
     font-size: 22px;

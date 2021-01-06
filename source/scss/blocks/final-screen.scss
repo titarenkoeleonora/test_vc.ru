@@ -1,8 +1,11 @@
 .final-screen {
+  height: 0;
   transform: translateY(-10000px);
-  transition: transform 1s;
+  transition: all 0.8s;
+  overflow: hidden;
 
   &--active {
+    height: auto;
     transform: translateY(0px)
   }
 }

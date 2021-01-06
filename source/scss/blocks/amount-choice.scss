@@ -47,7 +47,28 @@
 }
 
 .amount-choice__input {
+  position: relative;
   width: 79%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    height: 9px;
+    background: linear-gradient(90deg, #FF9796 4.65%, #FE4D4A 101.3%);
+    border-radius: 8px;
+  }
+
+  @media (min-width: $tablet) {
+    &:before {
+      content: "";
+      position: absolute;
+      top: 22px;
+      height: 9px;
+      background: linear-gradient(90deg, #FF9796 4.65%, #FE4D4A 101.3%);
+      border-radius: 8px;
+    }
+  }
 }
 
 .amount-choice__input-bubble {
@@ -74,5 +95,18 @@
 
   @media (min-width: $tablet) {
     font-size: 16px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 23px;
+      left: 22px;
+      width: 7px;
+      height: 7px;
+      background-image: url("../../images/rectangle.svg");
+      background-size: 7px 7px;
+    }
   }
 }
+
+

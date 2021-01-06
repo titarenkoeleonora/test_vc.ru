@@ -1,5 +1,6 @@
 import "../scss/style.scss";
 import Calculator from "./calculator";
+import {getStatisticsBackground} from "./utils";
 
 const amountRange = document.querySelector(".amount-choice__input");
 const finalScreen = document.querySelector(".final-screen");
@@ -17,6 +18,8 @@ const accumulationInvestmentText = document.querySelector(".amount-result__accum
 const detailedDescriptionButtons = document.querySelectorAll(".amount-result__detailed-description-button");
 const detailedDescriptions = document.querySelectorAll(".amount-result__detailed-description");
 
+const styleElem = document.head.appendChild(document.createElement("style"));
+
 const calculator = new Calculator(amountRange, amountText, inputBubble, amountCalculations, accumulationText, accumulationDepositText, accumulationInvestmentText);
 
 const amountChangeHandler = () => {
@@ -25,15 +28,18 @@ const amountChangeHandler = () => {
 };
 
 const amountInputHandler = () => {
+  const inputProgressOffset = 501;
   inputBubble.classList.remove("visually-hidden");
   inputBubble.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRange.value)} &#8381;`;
   calculator.moveBubble();
+  styleElem.innerHTML = `.amount-choice__input:before {width: ${amountRange.value / inputProgressOffset}%;`;
 };
 
 amountRange.addEventListener("change", amountChangeHandler);
 amountRange.addEventListener("input", amountInputHandler);
 
 const statisticOpenHandler = () => {
+  getStatisticsBackground();
   statisticScreen.classList.toggle("statistics__average--active");
   statisticOpenButton.classList.toggle("statistics__open-button--active");
 
@@ -86,3 +92,4 @@ Array.from(detailedDescriptionButtons).map((button) => {
 // };
 //
 // window.addEventListener("click", windowClickHandler);
+
