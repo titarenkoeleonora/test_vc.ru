@@ -1,63 +1,88 @@
 import "../scss/style.scss";
-import {calculateDeposit} from "./utils";
-
-class Calculator {
-  constructor(inputRange, amount, amountCalculations, accumulationElement, accumulationDepositElem, accumulationInvestElem) {
-    this.inputRange = inputRange;
-    this.amountText = amount;
-    this.amountCalculations = amountCalculations;
-    this.accumulationElement = accumulationElement;
-    this.accumulationDepositElem = accumulationDepositElem;
-    this.accumulationInvestElem = accumulationInvestElem;
-    this.accumulation = null;
-    this.accumulationDeposit = null;
-    this.accumulationInvestment = null;
-  }
-
-  // formatNumber(number) {
-  //   this.formattedAmount = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(number);
-  // }
-
-  calculate() {
-    this.accumulation = 36 * this.inputRange.value;
-    // this.accumulationDeposit = calculateDeposit(this.inputRange.value);
-    // this.accumulationInvestment = Math.floor(this.inputRange.value + (this.inputRange.value * 0,7121));
-  }
-
-  renderInfo() {
-    this.calculate();
-    this.amountText.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.inputRange.value);
-    this.accumulationElement.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation);
-    this.accumulationDepositElem.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation);
-    this.accumulationInvestElem.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation);
-    console.log(this.accumulationElement, this.accumulationDepositElem, this.accumulationInvestElem);
-    console.log(new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation))
-  }
-}
+import Calculator from "./calculator";
 
 const amountRange = document.querySelector(".amount-choice__input");
 const finalScreen = document.querySelector(".final-screen");
 const amountText = document.querySelector(".amount-result__text-money");
+const inputBubble = document.querySelector(".amount-choice__input-bubble");
 
 const statisticScreen = document.querySelector(".statistics__average");
 const statisticOpenButton = document.querySelector(".statistics__open-button");
 
-const amountCalculations = document.querySelectorAll(".amount-result__calculation");
-const accumulationText = document.querySelectorAll(".amount-result__accumulation");
-const accumulationDepositText = document.querySelectorAll(".amount-result__accumulation-deposit");
-const accumulationInvestmentText = document.querySelectorAll(".amount-result__accumulation-investment");
+const amountCalculations = document.querySelector(".amount-result__calculation");
+const accumulationText = document.querySelector(".amount-result__accumulation");
+const accumulationDepositText = document.querySelector(".amount-result__accumulation-deposit");
+const accumulationInvestmentText = document.querySelector(".amount-result__accumulation-investment");
 
-const calculator = new Calculator(amountRange, amountText, amountCalculations, accumulationText, accumulationDepositText, accumulationInvestmentText);
+const detailedDescriptionButtons = document.querySelectorAll(".amount-result__detailed-description-button");
+const detailedDescriptions = document.querySelectorAll(".amount-result__detailed-description");
+
+const calculator = new Calculator(amountRange, amountText, inputBubble, amountCalculations, accumulationText, accumulationDepositText, accumulationInvestmentText);
 
 const amountChangeHandler = () => {
   calculator.renderInfo();
   finalScreen.classList.add("final-screen--active");
 };
 
+const amountInputHandler = () => {
+  inputBubble.classList.remove("visually-hidden");
+  inputBubble.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRange.value)} &#8381;`;
+  calculator.moveBubble();
+};
+
 amountRange.addEventListener("change", amountChangeHandler);
+amountRange.addEventListener("input", amountInputHandler);
 
 const statisticOpenHandler = () => {
   statisticScreen.classList.toggle("statistics__average--active");
+  statisticOpenButton.classList.toggle("statistics__open-button--active");
+
+  statisticOpenButton.innerHTML === "Свернуть" ?
+    statisticOpenButton.innerHTML = "А как в среднем у читателей vc.ru?" : statisticOpenButton.innerHTML = "Свернуть";
 };
 
 statisticOpenButton.addEventListener("click", statisticOpenHandler);
+
+const detailedClickHandler = (evt) => {
+  const buttonType = evt.target.dataset.type;
+  const detailedDescriptionsArray = Array.from(detailedDescriptions);
+
+  switch (buttonType) {
+    case "accumulation":
+      detailedDescriptionsArray.map((detailedDescription) => {
+        detailedDescription.dataset.type === "accumulation" ? detailedDescription.classList.toggle("visually-hidden") : "";
+        detailedDescription.dataset.type !== "accumulation" && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.toggle("visually-hidden") : "";
+      });
+      break;
+    case "deposit":
+      detailedDescriptionsArray.map((detailedDescription) => {
+        detailedDescription.dataset.type === "deposit" ? detailedDescription.classList.toggle("visually-hidden") : "";
+        detailedDescription.dataset.type !== "deposit" && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.add("visually-hidden") : "";
+      });
+      break;
+    case "investment":
+      detailedDescriptionsArray.map((detailedDescription) => {
+        detailedDescription.dataset.type === "investment" ? detailedDescription.classList.toggle("visually-hidden") : "";
+        detailedDescription.dataset.type !== "investment" && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.add("visually-hidden") : "";
+      });
+      break;
+    default:
+      return;
+  }
+};
+
+Array.from(detailedDescriptionButtons).map((button) => {
+  button.addEventListener("click", detailedClickHandler);
+});
+
+// const windowClickHandler = (evt) => {
+//   Array.from(detailedDescriptionButtons).map((button) => {
+//       if (evt.target !== button) {
+//         Array.from(detailedDescriptions).map((description) => {
+//           !description.classList.contains("visually-hidden") ? description.classList.add("visually-hidden") : "";
+//         });
+//       };
+//     });
+// };
+//
+// window.addEventListener("click", windowClickHandler);

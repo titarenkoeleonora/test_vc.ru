@@ -31,7 +31,12 @@
   color: $white;
   background-color: $dark-pink;
   border-radius: 5px;
+  outline: none;
 
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
 
   @media (min-width: $tablet) {
     padding: 12px 41px;

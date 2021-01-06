@@ -19,6 +19,7 @@
               Ответьте и узнаете, сколько копят другие.
             </p>
             <div class="amount-choice__input-wrapper">
+              <output class="amount-choice__input-bubble visually-hidden" for="amount"> &#8381;</output>
               <p class="amount-choice__input-min">0&nbsp;&#8381;</p>
               <input
                 class="amount-choice__input"
@@ -26,6 +27,7 @@
                 min="0"
                 max="50000"
                 value="0"
+                id="amount"
               />
               <p class="amount-choice__input-max">50&nbsp;000&nbsp;&#8381;</p>
             </div>
@@ -43,17 +45,25 @@
               </p>
               <ul class="amount-result__calculation-list">
                 <li class="amount-result__calculation-item">
-                  <p class="amount-result__calculation">&#126;<span class="amount-result__accumulation"></span> &#8381;</p>
+                  <p class="amount-result__calculation">&#126;<span class="amount-result__accumulation"></span>&nbsp;&#8381;</p>
                   <p class="amount-result__description">
                     если откладывать под матрас
-                    <button class="amount-result__detailed-description" type="button" aria-label="Подробнее">?</button>
+                    <button class="amount-result__detailed-description-button" type="button" data-type="accumulation" aria-label="Подробнее">?</button>
+                  </p>
+                  <p class="amount-result__detailed-description visually-hidden" data-type="accumulation">В этом мало смысла — такие
+                    накопления «съедает» инфляция.
                   </p>
                 </li>
                 <li class="amount-result__calculation-item">
                   <p class="amount-result__calculation">&#126;<span class="amount-result__accumulation-deposit"></span>&nbsp;&#8381;</p>
                   <p class="amount-result__description">
                     если откладывать на депозит
-                    <button class="amount-result__detailed-description" type="button" aria-label="Подробнее">?</button>
+                    <button class="amount-result__detailed-description-button" type="button" data-type="deposit" aria-label="Подробнее">?</button>
+                  </p>
+                  <p class="amount-result__detailed-description visually-hidden" data-type="deposit">Ставки по вкладам различны в разных банках и зависят от многих факторов,
+                    в частности, от ключевой ставки Центрального банка
+                    РФ<a href="https://vc.ru/promo/76505-alfa-kapital-yuridicheskaya-informaciya?ea=678fa71362d1b64dda32a1e6c54730abd442d756633f11fa1548bfcc17e7bfb5#1">
+                      <sup class="amount-result__footnote">1</sup></a>.
                   </p>
                 </li>
                 <li class="amount-result__calculation-item">
@@ -62,7 +72,13 @@
                   </p>
                   <p class="amount-result__description">
                     если инвестировать в ПИФ «Альфа-Капитала»
-                    <button class="amount-result__detailed-description" type="button" aria-label="Подробнее">?</button>
+                    <button class="amount-result__detailed-description-button" type="button" data-type="investment" aria-label="Подробнее">?</button>
+                  </p>
+                  <p class="amount-result__detailed-description amount-result__detailed-description--investment visually-hidden" data-type="investment">
+                    Вы становитесь инвестором набора компаний, который определяют профессиональные управляющие.
+                    Они решают, когда покупать и продавать ценные бумаги, чтобы обеспечить инвестиционный доход. Купить или продать паи фонда можно
+                    в любой момент<a href="https://vc.ru/promo/76505-alfa-kapital-yuridicheskaya-informaciya?ea=678fa71362d1b64dda32a1e6c54730abd442d756633f11fa1548bfcc17e7bfb5#2">
+                    <sup class="amount-result__footnote">2</sup></a>.
                   </p>
                 </li>
               </ul>

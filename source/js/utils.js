@@ -1,14 +1,11 @@
 const DEPOSIT_PERCENT = 0.0698;
-const DAYS_IN_MONTH = 30;
-const DAYS_IN_YEAR = 365;
+const MONTH_IN_YEAR = 12;
 
 export const calculateDeposit = (payment) => {
-  let calculation = 0;
+  const firstYearAccumulation = payment * MONTH_IN_YEAR  + payment * MONTH_IN_YEAR * DEPOSIT_PERCENT;
+  const secondYearAccumulation = (payment * MONTH_IN_YEAR + firstYearAccumulation) + (payment * MONTH_IN_YEAR + firstYearAccumulation) * DEPOSIT_PERCENT;
+  const thirdYearAccumulation = Math.floor((payment * MONTH_IN_YEAR + secondYearAccumulation) + (payment * MONTH_IN_YEAR + secondYearAccumulation) * DEPOSIT_PERCENT);
 
-  for(let i = 1; i <= 36; i++) {
-    calculation = payment * 36 + ((payment * i) * DEPOSIT_PERCENT * (DAYS_IN_MONTH * i)) / DAYS_IN_YEAR;
-    console.log(DAYS_IN_MONTH * i)
-  }
 
-  return calculation;
+  return thirdYearAccumulation;
 };
