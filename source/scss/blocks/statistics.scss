@@ -76,7 +76,7 @@
   flex-direction: column;
   align-items: center;
   width: 297px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .statistics__average-value {
@@ -131,7 +131,6 @@
 
 .statistics__percents-value {
   @include reset-text;
-  padding-top: 178px;
   margin-bottom: 9px;
   color: $dark-pink;
   font-family: "Roboto-Bold";
@@ -139,5 +138,35 @@
 
   @media (min-width: $tablet) {
     font-size: 20px;
+  }
+}
+
+.statistics__diagram-wrapper {
+  position: relative;
+  margin-bottom: 32px;
+  width: 126px;
+  height: 126px;
+  border: 15px solid $white;
+  border-radius: 50%;
+}
+
+.statistics__diagram {
+  position: absolute;
+  top: -30px;
+  left: -31px;
+  width: 155px;
+  height: 155px;
+  stroke: $dark-pink;
+  stroke-width: 7px;
+  fill: none;
+  stroke-dashoffset: 25;
+  fill: none;
+
+  &--more-thousand {
+    stroke-dasharray: 50 50;
+  }
+
+  &--more-ten-thousand {
+    stroke-dasharray: 7 93;
   }
 }

@@ -1,3 +1,4 @@
+
 import {calculateDeposit, calculateInvestment} from "./utils";
 export default class Calculator {
   constructor(inputRange, amount, inputBubble, amountCalculations, accumulationElement, accumulationDepositElem, accumulationInvestElem) {
@@ -12,15 +13,16 @@ export default class Calculator {
     this.accumulationDeposit = null;
     this.accumulationInvestment = null;
 
-    this.bubbleOffset = 680;
+    this.newBubblePoint = null;
+    this.newBubblePlace = null;
   }
 
-  // formatNumber(number) {
-  //   this.formattedAmount = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(number);
-  // }
-
   moveBubble() {
-    this.inputBubble.style.left = this.inputRange.value / this.bubbleOffset + "%";
+    this.rangeMinValue = this.inputRange.min;
+    this.rangeMaxValue = this.inputRange.max;
+    this.newBubblePosition = Number(((this.inputRange.value - this.rangeMinValue) * 100) / (this.rangeMaxValue - this.rangeMinValue));
+
+    this.inputBubble.style.left = `calc(${this.newBubblePosition}% + (${10 - this.newBubblePosition * 0.25}px))`;
   }
 
   calculate() {

@@ -30,7 +30,7 @@ const amountChangeHandler = () => {
 const amountInputHandler = () => {
   const inputProgressOffset = 501;
   inputBubble.classList.remove("visually-hidden");
-  inputBubble.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRange.value)} &#8381;`;
+  inputBubble.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRange.value)}&nbsp;&#8381;`;
   calculator.moveBubble();
   styleElem.innerHTML = `.amount-choice__input:before {width: ${amountRange.value / inputProgressOffset}%;`;
 };
@@ -48,6 +48,15 @@ const statisticOpenHandler = () => {
 };
 
 statisticOpenButton.addEventListener("click", statisticOpenHandler);
+
+const windowClickHandler = (evt) => {
+  Array.from(detailedDescriptions).forEach((description) => {
+    if (!evt.target.classList.contains("amount-result__detailed-description-button") && !evt.target.classList.contains("amount-result__detailed-description")) {
+      console.log(evt.target)
+      description.classList.add("visually-hidden");
+    }
+  });
+};
 
 const detailedClickHandler = (evt) => {
   const buttonType = evt.target.dataset.type;
@@ -75,21 +84,11 @@ const detailedClickHandler = (evt) => {
     default:
       return;
   }
+
+  window.addEventListener("click", windowClickHandler);
 };
 
 Array.from(detailedDescriptionButtons).map((button) => {
   button.addEventListener("click", detailedClickHandler);
 });
-
-// const windowClickHandler = (evt) => {
-//   Array.from(detailedDescriptionButtons).map((button) => {
-//       if (evt.target !== button) {
-//         Array.from(detailedDescriptions).map((description) => {
-//           !description.classList.contains("visually-hidden") ? description.classList.add("visually-hidden") : "";
-//         });
-//       };
-//     });
-// };
-//
-// window.addEventListener("click", windowClickHandler);
 
