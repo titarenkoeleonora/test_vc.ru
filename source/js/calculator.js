@@ -15,6 +15,11 @@ export default class Calculator {
 
     this.newBubblePoint = null;
     this.newBubblePlace = null;
+
+    this.maxAccumulation = null;
+    this.accumulationStep = null;
+    this.coinsCount = null;
+    this.coinsWrapperElement = document.querySelector(".amount-result__coins-wrapper")
   }
 
   moveBubble() {
@@ -29,6 +34,13 @@ export default class Calculator {
     this.accumulation = 36 * this.inputRange.value;
     this.accumulationDeposit = calculateDeposit(this.inputRange.value);
     this.accumulationInvestment = calculateInvestment(this.inputRange.value);
+  }
+
+  renderCoins() {
+    this.maxAccumulation = this.inputRange.max * 36;
+    this.accumulationStep = this.maxAccumulation / 10;
+    this.coinsCount = Math.ceil(this.accumulation / this.accumulationStep)
+    console.log(this.coinsCount)
   }
 
   renderInfo() {

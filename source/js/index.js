@@ -25,6 +25,11 @@ const calculator = new Calculator(amountRange, amountText, inputBubble, amountCa
 const amountChangeHandler = () => {
   calculator.renderInfo();
   finalScreen.classList.add("final-screen--active");
+  calculator.renderCoins();
+
+  setTimeout(() => {
+    finalScreen.scrollIntoView({block: "start", behavior: "smooth"});
+  }, 1000);
 };
 
 const amountInputHandler = () => {
@@ -42,11 +47,13 @@ const statisticOpenHandler = () => {
   getStatisticsBackground();
   statisticScreen.classList.toggle("statistics__average--active");
   statisticOpenButton.classList.toggle("statistics__open-button--active");
+  setTimeout(() => {
+    statisticScreen.scrollIntoView({block: "start", behavior: "smooth"});
+  }, 200);
 
   statisticOpenButton.innerHTML === "Свернуть" ?
     statisticOpenButton.innerHTML = "А как в среднем у читателей vc.ru?" : statisticOpenButton.innerHTML = "Свернуть";
 };
-
 statisticOpenButton.addEventListener("click", statisticOpenHandler);
 
 const windowClickHandler = (evt) => {

@@ -73,6 +73,14 @@
   @media (min-width: $tablet) {
     font-size: 16px;
   }
+
+  @media (min-width: $desktop) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+
 }
 
 .amount-result__detailed-description-button {
@@ -144,8 +152,6 @@
       background-position: center;
     }
   }
-
-
 
   @media (min-width: $tablet) {
     width: 299px;
