@@ -32,7 +32,6 @@
 
 .amount-result__calculation-item {
   position: relative;
-  padding-top: 81px;
   margin-bottom: 26px;
   margin-right: 30px;
   width: 150px;
@@ -44,7 +43,6 @@
   }
 
   @media (min-width: $tablet) {
-    padding-top: 81px;
     margin-right: 33px;
 
     &:last-child {
@@ -72,15 +70,13 @@
 
   @media (min-width: $tablet) {
     font-size: 16px;
+
+    &--investment {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+    }
   }
-
-  @media (min-width: $desktop) {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-  }
-
-
 }
 
 .amount-result__detailed-description-button {
@@ -162,4 +158,22 @@
   font-size: 9px;
   color: $white;
   cursor: pointer;
+}
+
+.amount-result__coins-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.amount-result__coin {
+  margin-left: -40px;
+  width: 55px;
+  height: 56px;
+  background-image: url("../../images/coin.png");
+
+  &:last-child {
+    width: fit-content;
+  }
 }

@@ -2,64 +2,60 @@ import "../scss/style.scss";
 import Calculator from "./calculator";
 import {getStatisticsBackground} from "./utils";
 
-const amountRange = document.querySelector(".amount-choice__input");
-const finalScreen = document.querySelector(".final-screen");
-const amountText = document.querySelector(".amount-result__text-money");
-const inputBubble = document.querySelector(".amount-choice__input-bubble");
+const amountRangeElement = document.querySelector(".amount-choice__input");
+const finalScreenElement = document.querySelector(".final-screen");
+const amountTextElement = document.querySelector(".amount-result__text-money");
+const inputBubbleElement = document.querySelector(".amount-choice__input-bubble");
+const statisticScreenElement = document.querySelector(".statistics__average");
+const statisticOpenButtonElement = document.querySelector(".statistics__open-button");
+const amountCalculationsElement = document.querySelector(".amount-result__calculation");
+const accumulationTextElement = document.querySelector(".amount-result__accumulation");
+const amountResultItemElement = document.querySelector(".amount-result__calculation-item");
+const accumulationDepositTextElement = document.querySelector(".amount-result__accumulation-deposit");
+const accumulationInvestmentTextElement = document.querySelector(".amount-result__accumulation-investment");
+const detailedDescriptionButtonsElement = document.querySelectorAll(".amount-result__detailed-description-button");
+const detailedDescriptionsElement = document.querySelectorAll(".amount-result__detailed-description");
+const styleElement = document.head.appendChild(document.createElement("style"));
 
-const statisticScreen = document.querySelector(".statistics__average");
-const statisticOpenButton = document.querySelector(".statistics__open-button");
-
-const amountCalculations = document.querySelector(".amount-result__calculation");
-const accumulationText = document.querySelector(".amount-result__accumulation");
-const accumulationDepositText = document.querySelector(".amount-result__accumulation-deposit");
-const accumulationInvestmentText = document.querySelector(".amount-result__accumulation-investment");
-
-const detailedDescriptionButtons = document.querySelectorAll(".amount-result__detailed-description-button");
-const detailedDescriptions = document.querySelectorAll(".amount-result__detailed-description");
-
-const styleElem = document.head.appendChild(document.createElement("style"));
-
-const calculator = new Calculator(amountRange, amountText, inputBubble, amountCalculations, accumulationText, accumulationDepositText, accumulationInvestmentText);
+const calculator = new Calculator(amountRangeElement, amountTextElement, inputBubbleElement, amountCalculationsElement, amountResultItemElement, accumulationTextElement, accumulationDepositTextElement, accumulationInvestmentTextElement);
 
 const amountChangeHandler = () => {
   calculator.renderInfo();
-  finalScreen.classList.add("final-screen--active");
-  calculator.renderCoins();
+  finalScreenElement.classList.add("final-screen--active");
 
   setTimeout(() => {
-    finalScreen.scrollIntoView({block: "start", behavior: "smooth"});
+    finalScreenElement.scrollIntoView({block: "start", behavior: "smooth"});
   }, 1000);
 };
 
 const amountInputHandler = () => {
   const inputProgressOffset = 501;
-  inputBubble.classList.remove("visually-hidden");
-  inputBubble.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRange.value)}&nbsp;&#8381;`;
+  inputBubbleElement.classList.remove("visually-hidden");
+  inputBubbleElement.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRangeElement.value)}&nbsp;&#8381;`;
   calculator.moveBubble();
-  styleElem.innerHTML = `.amount-choice__input:before {width: ${amountRange.value / inputProgressOffset}%;`;
+  styleElement.innerHTML = `.amount-choice__input:before {width: ${amountRangeElement.value / inputProgressOffset}%;`;
 };
 
-amountRange.addEventListener("change", amountChangeHandler);
-amountRange.addEventListener("input", amountInputHandler);
+amountRangeElement.addEventListener("change", amountChangeHandler);
+amountRangeElement.addEventListener("input", amountInputHandler);
 
 const statisticOpenHandler = () => {
   getStatisticsBackground();
-  statisticScreen.classList.toggle("statistics__average--active");
-  statisticOpenButton.classList.toggle("statistics__open-button--active");
+  statisticScreenElement.classList.toggle("statistics__average--active");
+  statisticOpenButtonElement.classList.toggle("statistics__open-button--active");
   setTimeout(() => {
-    statisticScreen.scrollIntoView({block: "start", behavior: "smooth"});
+    statisticScreenElement.scrollIntoView({block: "start", behavior: "smooth"});
   }, 200);
 
-  statisticOpenButton.innerHTML === "Свернуть" ?
-    statisticOpenButton.innerHTML = "А как в среднем у читателей vc.ru?" : statisticOpenButton.innerHTML = "Свернуть";
+  statisticOpenButtonElement.innerHTML === "Свернуть" ?
+    statisticOpenButtonElement.innerHTML = "А как в среднем у читателей vc.ru?" : statisticOpenButtonElement.innerHTML = "Свернуть";
 };
-statisticOpenButton.addEventListener("click", statisticOpenHandler);
+
+statisticOpenButtonElement.addEventListener("click", statisticOpenHandler);
 
 const windowClickHandler = (evt) => {
-  Array.from(detailedDescriptions).forEach((description) => {
+  Array.from(detailedDescriptionsElement).forEach((description) => {
     if (!evt.target.classList.contains("amount-result__detailed-description-button") && !evt.target.classList.contains("amount-result__detailed-description")) {
-      console.log(evt.target)
       description.classList.add("visually-hidden");
     }
   });
@@ -67,7 +63,7 @@ const windowClickHandler = (evt) => {
 
 const detailedClickHandler = (evt) => {
   const buttonType = evt.target.dataset.type;
-  const detailedDescriptionsArray = Array.from(detailedDescriptions);
+  const detailedDescriptionsArray = Array.from(detailedDescriptionsElement);
 
   switch (buttonType) {
     case "accumulation":
@@ -95,7 +91,7 @@ const detailedClickHandler = (evt) => {
   window.addEventListener("click", windowClickHandler);
 };
 
-Array.from(detailedDescriptionButtons).map((button) => {
+Array.from(detailedDescriptionButtonsElement).forEach(button => {
   button.addEventListener("click", detailedClickHandler);
 });
 

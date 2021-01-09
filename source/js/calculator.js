@@ -1,7 +1,7 @@
 
 import {calculateDeposit, calculateInvestment} from "./utils";
 export default class Calculator {
-  constructor(inputRange, amount, inputBubble, amountCalculations, accumulationElement, accumulationDepositElem, accumulationInvestElem) {
+  constructor(inputRange, amount, inputBubble, amountCalculations, amountResultItem, accumulationElement, accumulationDepositElem, accumulationInvestElem) {
     this.inputRange = inputRange;
     this.amountText = amount;
     this.inputBubble = inputBubble;
@@ -9,6 +9,7 @@ export default class Calculator {
     this.accumulationElement = accumulationElement;
     this.accumulationDepositElem = accumulationDepositElem;
     this.accumulationInvestElem = accumulationInvestElem;
+    this.amountResultItem = amountResultItem;
     this.accumulation = null;
     this.accumulationDeposit = null;
     this.accumulationInvestment = null;
@@ -19,7 +20,8 @@ export default class Calculator {
     this.maxAccumulation = null;
     this.accumulationStep = null;
     this.coinsCount = null;
-    this.coinsWrapperElement = document.querySelector(".amount-result__coins-wrapper")
+    this.coins = null;
+    this.coinsWrapperElement = document.querySelectorAll(".amount-result__coins-wrapper")
   }
 
   moveBubble() {
@@ -36,15 +38,31 @@ export default class Calculator {
     this.accumulationInvestment = calculateInvestment(this.inputRange.value);
   }
 
-  renderCoins() {
+  calculateCoinsCount() {
     this.maxAccumulation = this.inputRange.max * 36;
     this.accumulationStep = this.maxAccumulation / 10;
     this.coinsCount = Math.ceil(this.accumulation / this.accumulationStep)
-    console.log(this.coinsCount)
+  }
+
+  renderCoins() {
+    this.calculateCoinsCount();
+    this.coins = "";
+
+    Array.from(this.coinsWrapperElement).map((coinWrapper) => coinWrapper.innerHTML = "");
+
+    for (let i = 0; i <= this.coinsCount; i++) {
+      this.coins = this.coins + "<div class='amount-result__coin'></div>"
+      console.log(this.coins)
+    }
+
+    Array.from(this.coinsWrapperElement).map((coinWrapper) => {
+      coinWrapper.insertAdjacentHTML("beforeend", this.coins);
+    });
   }
 
   renderInfo() {
     this.calculate();
+    this.renderCoins();
     this.amountText.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.inputRange.value);
     this.accumulationElement.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulation);
     this.accumulationDepositElem.innerHTML = new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(this.accumulationDeposit);
