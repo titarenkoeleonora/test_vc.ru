@@ -3,7 +3,6 @@ input[type="range"] {
   -moz-appearance: none;
   appearance: none;
   outline: none;
-
 }
 
 input[type="range"] {
@@ -24,13 +23,13 @@ input[type="range"] {
   &::-moz-range-progress {
     height: 9px;
     border-radius: 8px;
-    background: linear-gradient(90deg, #FF9796 4.65%, $dark-pink 101.3%);
+    background: linear-gradient(90deg, #ff9796 4.65%, $dark-pink 101.3%);
   }
 
   &::-ms-fill-lower {
     height: 9px;
     border-radius: 8px;
-    background: linear-gradient(90deg, #FF9796 4.65%, $dark-pink 101.3%);
+    background: linear-gradient(90deg, #ff9796 4.65%, $dark-pink 101.3%);
   }
 
   &::-ms-fill-upper {

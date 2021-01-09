@@ -1,6 +1,9 @@
+import smoothscroll from "smoothscroll-polyfill";
 import "../scss/style.scss";
 import Calculator from "./calculator";
-import {getStatisticsBackground} from "./utils";
+import {getStatisticsBackground} from "./utils/utils";
+
+smoothscroll.polyfill();
 
 const amountRangeElement = document.querySelector(".amount-choice__input");
 const finalScreenElement = document.querySelector(".final-screen");
@@ -15,9 +18,11 @@ const accumulationDepositTextElement = document.querySelector(".amount-result__a
 const accumulationInvestmentTextElement = document.querySelector(".amount-result__accumulation-investment");
 const detailedDescriptionButtonsElement = document.querySelectorAll(".amount-result__detailed-description-button");
 const detailedDescriptionsElement = document.querySelectorAll(".amount-result__detailed-description");
+const coinsWrapperElement = document.querySelectorAll(".amount-result__coins-wrapper")
+
 const styleElement = document.head.appendChild(document.createElement("style"));
 
-const calculator = new Calculator(amountRangeElement, amountTextElement, inputBubbleElement, amountCalculationsElement, amountResultItemElement, accumulationTextElement, accumulationDepositTextElement, accumulationInvestmentTextElement);
+const calculator = new Calculator(amountRangeElement, amountTextElement, inputBubbleElement, amountCalculationsElement, amountResultItemElement, accumulationTextElement, accumulationDepositTextElement, accumulationInvestmentTextElement, coinsWrapperElement);
 
 const amountChangeHandler = () => {
   calculator.renderInfo();

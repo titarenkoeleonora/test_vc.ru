@@ -3,10 +3,10 @@
 }
 
 .statistics__wrapper {
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 24px;
 }
 
 .statistics__open-button {
@@ -39,14 +39,6 @@
 
   &--active {
     &::after {
-      content: "";
-      position: absolute;
-      top: calc(50% - 2px);
-      right: -15px;
-      width: 13px;
-      height: 5px;
-      background-image: url("../../images/vector.svg");
-      background-size: 13px 5px;
       transform: rotate(180deg);
     }
   }
@@ -86,11 +78,11 @@
   margin-bottom: 8px;
   width: 200px;
   text-align: center;
-  background-color: #FFF6F8;
-  border-radius: 50%;
   color: $dark-pink;
   font-family: "Roboto-Bold";
   font-size: 18px;
+  background-color: #FFF6F8;
+  border-radius: 50%;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: calc(100% - 60px);
@@ -122,11 +114,11 @@
   }
 }
 .statistics__percents-wrapper {
+  margin-bottom: 29px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 190px;
-  margin-bottom: 29px;
 }
 
 .statistics__percents-value {

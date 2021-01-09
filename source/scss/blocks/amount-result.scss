@@ -16,17 +16,17 @@
 
 .amount-result__calculation-list {
   @include reset-list;
+  margin-bottom: 26px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 580px;
-  margin-bottom: 26px;
 
   @media (min-width: $tablet) {
-    flex-wrap: nowrap;
-    justify-content: start;
     padding-left: 12px;
     margin-bottom: 0;
+    flex-wrap: nowrap;
+    justify-content: start;
   }
 }
 
@@ -134,23 +134,40 @@
   }
 
   &--investment {
+    bottom: calc(100% - 95px);
     left: calc(100% - 235px);
 
     &:after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
       left: 164px;
-      width: 9px;
-      height: 9px;
-      background-image: url("../../images/rectangle.svg");
-      background-size: 9px 9px;
-      background-position: center;
     }
   }
 
   @media (min-width: $tablet) {
     width: 299px;
+
+    &:after {
+      left: 140px;
+    }
+
+    &--investment {
+      bottom: calc(100% - 105px);
+
+      &:after {
+        left: 220px;
+      }
+    }
+  }
+
+  @media (min-width: $desktop) {
+    &:after {
+      left: 137px;
+    }
+
+    &--investment {
+      &:after {
+        left: 220px;
+      }
+    }
   }
 }
 

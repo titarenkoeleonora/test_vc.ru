@@ -1,7 +1,7 @@
 
-import {calculateDeposit, calculateInvestment} from "./utils";
+import {calculateDeposit, calculateInvestment} from "./utils/utils";
 export default class Calculator {
-  constructor(inputRange, amount, inputBubble, amountCalculations, amountResultItem, accumulationElement, accumulationDepositElem, accumulationInvestElem) {
+  constructor(inputRange, amount, inputBubble, amountCalculations, amountResultItem, accumulationElement, accumulationDepositElem, accumulationInvestElem, coinsWrapperElement) {
     this.inputRange = inputRange;
     this.amountText = amount;
     this.inputBubble = inputBubble;
@@ -10,18 +10,17 @@ export default class Calculator {
     this.accumulationDepositElem = accumulationDepositElem;
     this.accumulationInvestElem = accumulationInvestElem;
     this.amountResultItem = amountResultItem;
+    this.coinsWrapperElement = coinsWrapperElement;
+
     this.accumulation = null;
     this.accumulationDeposit = null;
     this.accumulationInvestment = null;
-
     this.newBubblePoint = null;
     this.newBubblePlace = null;
-
     this.maxAccumulation = null;
     this.accumulationStep = null;
     this.coinsCount = null;
     this.coins = null;
-    this.coinsWrapperElement = document.querySelectorAll(".amount-result__coins-wrapper")
   }
 
   moveBubble() {
