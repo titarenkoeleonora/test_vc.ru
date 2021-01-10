@@ -1,5 +1,6 @@
-
 import {calculateDeposit, calculateInvestment} from "./utils/utils";
+import {bubbleFirstOffset, bubbleSecondOffset, coinStepNumber, Time} from "./utils/constants";
+
 export default class Calculator {
   constructor(inputRange, amount, inputBubble, amountCalculations, amountResultItem, accumulationElement, accumulationDepositElem, accumulationInvestElem, coinsWrapperElement) {
     this.inputRange = inputRange;
@@ -28,18 +29,18 @@ export default class Calculator {
     this.rangeMaxValue = this.inputRange.max;
     this.newBubblePosition = Number(((this.inputRange.value - this.rangeMinValue) * 100) / (this.rangeMaxValue - this.rangeMinValue));
 
-    this.inputBubble.style.left = `calc(${this.newBubblePosition}% + (${10 - this.newBubblePosition * 0.25}px))`;
+    this.inputBubble.style.left = `calc(${this.newBubblePosition}% + (${bubbleFirstOffset - this.newBubblePosition * bubbleSecondOffset}px))`;
   }
 
   calculate() {
-    this.accumulation = 36 * this.inputRange.value;
+    this.accumulation = Time.THREE_YEARS_MONTH * this.inputRange.value;
     this.accumulationDeposit = calculateDeposit(this.inputRange.value);
     this.accumulationInvestment = calculateInvestment(this.inputRange.value);
   }
 
   calculateCoinsCount() {
-    this.maxAccumulation = this.inputRange.max * 36;
-    this.accumulationStep = this.maxAccumulation / 10;
+    this.maxAccumulation = this.inputRange.max * Time.THREE_YEARS_MONTH;
+    this.accumulationStep = this.maxAccumulation / coinStepNumber;
     this.coinsCount = Math.ceil(this.accumulation / this.accumulationStep)
   }
 

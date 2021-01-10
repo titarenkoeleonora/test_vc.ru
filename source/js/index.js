@@ -2,6 +2,7 @@ import smoothscroll from "smoothscroll-polyfill";
 import "../scss/style.scss";
 import Calculator from "./calculator";
 import {getStatisticsBackground} from "./utils/utils";
+import {inputProgressOffset} from "./utils/constants";
 
 smoothscroll.polyfill();
 
@@ -34,7 +35,6 @@ const amountChangeHandler = () => {
 };
 
 const amountInputHandler = () => {
-  const inputProgressOffset = 501;
   inputBubbleElement.classList.remove("visually-hidden");
   inputBubbleElement.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRangeElement.value)}&nbsp;&#8381;`;
   calculator.moveBubble();
