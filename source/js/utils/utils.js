@@ -1,17 +1,9 @@
-import {DEPOSIT_PERCENT, INVESTMENT_PERCENT_YEAR, Time} from "./constants";
+import {Time} from "./constants";
 
-export const calculateDeposit = (payment) => {
-  const firstYearAccumulation = payment * Time.MONTH_IN_YEAR  + payment * Time.MONTH_IN_YEAR * DEPOSIT_PERCENT;
-  const secondYearAccumulation = (payment * Time.MONTH_IN_YEAR + firstYearAccumulation) + (payment * Time.MONTH_IN_YEAR + firstYearAccumulation) * DEPOSIT_PERCENT;
-  const thirdYearAccumulation = Math.floor((payment * Time.MONTH_IN_YEAR + secondYearAccumulation) + (payment * Time.MONTH_IN_YEAR + secondYearAccumulation) * DEPOSIT_PERCENT);
-
-  return thirdYearAccumulation;
-};
-
-export const calculateInvestment = (payment) => {
-  const firstYearAccumulation = payment * Time.MONTH_IN_YEAR + payment * Time.MONTH_IN_YEAR * INVESTMENT_PERCENT_YEAR;
-  const secondYearAccumulation = (payment * Time.MONTH_IN_YEAR + firstYearAccumulation) + (payment * Time.MONTH_IN_YEAR + firstYearAccumulation) * INVESTMENT_PERCENT_YEAR;
-  const thirdYearAccumulation = Math.floor((payment * Time.MONTH_IN_YEAR + secondYearAccumulation) + (payment * Time.MONTH_IN_YEAR + secondYearAccumulation) * INVESTMENT_PERCENT_YEAR);
+export const calculateAccumulation = (payment, accumulationType) => {
+  const firstYearAccumulation = payment * Time.MONTH_IN_YEAR  + payment * Time.MONTH_IN_YEAR * accumulationType;
+  const secondYearAccumulation = (payment * Time.MONTH_IN_YEAR + firstYearAccumulation) + (payment * Time.MONTH_IN_YEAR + firstYearAccumulation) * accumulationType;
+  const thirdYearAccumulation = Math.floor((payment * Time.MONTH_IN_YEAR + secondYearAccumulation) + (payment * Time.MONTH_IN_YEAR + secondYearAccumulation) * accumulationType);
 
   return thirdYearAccumulation;
 };
@@ -43,4 +35,13 @@ export const getStatisticsBackground = () => {
   }
 };
 
+export const formatNumber = (number) => {
+  return new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(number);
+};
 
+export const toggleDetailedDescription = (type, detailedDescriptionsArray) => {
+  detailedDescriptionsArray.forEach((detailedDescription) => {
+    detailedDescription.dataset.type === type ? detailedDescription.classList.toggle("visually-hidden") : "";
+    detailedDescription.dataset.type !== type && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.add("visually-hidden") : "";
+  });
+}

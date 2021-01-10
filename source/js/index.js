@@ -1,8 +1,8 @@
 import smoothscroll from "smoothscroll-polyfill";
 import "../scss/style.scss";
 import Calculator from "./calculator";
-import {getStatisticsBackground} from "./utils/utils";
-import {inputProgressOffset} from "./utils/constants";
+import {formatNumber, getStatisticsBackground, toggleDetailedDescription} from "./utils/utils";
+import {accumulationType, inputProgressOffset} from "./utils/constants";
 
 smoothscroll.polyfill();
 
@@ -36,7 +36,7 @@ const amountChangeHandler = () => {
 
 const amountInputHandler = () => {
   inputBubbleElement.classList.remove("visually-hidden");
-  inputBubbleElement.innerHTML = `${new Intl.NumberFormat('ru-RU',{useGrouping: true}).format(amountRangeElement.value)}&nbsp;&#8381;`;
+  inputBubbleElement.innerHTML = `${formatNumber(amountRangeElement.value)}&nbsp;&#8381;`;
   calculator.moveBubble();
   styleElement.innerHTML = `.amount-choice__input:before {width: ${amountRangeElement.value / inputProgressOffset}%;`;
 };
@@ -71,23 +71,14 @@ const detailedClickHandler = (evt) => {
   const detailedDescriptionsArray = Array.from(detailedDescriptionsElement);
 
   switch (buttonType) {
-    case "accumulation":
-      detailedDescriptionsArray.map((detailedDescription) => {
-        detailedDescription.dataset.type === "accumulation" ? detailedDescription.classList.toggle("visually-hidden") : "";
-        detailedDescription.dataset.type !== "accumulation" && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.toggle("visually-hidden") : "";
-      });
+    case accumulationType.ACCUMULATION:
+      toggleDetailedDescription(accumulationType.ACCUMULATION, detailedDescriptionsArray);
       break;
-    case "deposit":
-      detailedDescriptionsArray.map((detailedDescription) => {
-        detailedDescription.dataset.type === "deposit" ? detailedDescription.classList.toggle("visually-hidden") : "";
-        detailedDescription.dataset.type !== "deposit" && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.add("visually-hidden") : "";
-      });
+    case accumulationType.DEPOSIT:
+      toggleDetailedDescription(accumulationType.DEPOSIT, detailedDescriptionsArray);
       break;
-    case "investment":
-      detailedDescriptionsArray.map((detailedDescription) => {
-        detailedDescription.dataset.type === "investment" ? detailedDescription.classList.toggle("visually-hidden") : "";
-        detailedDescription.dataset.type !== "investment" && !detailedDescription.classList.contains("visually-hidden") ? detailedDescription.classList.add("visually-hidden") : "";
-      });
+    case accumulationType.INVESTMENT:
+      toggleDetailedDescription(accumulationType.INVESTMENT, detailedDescriptionsArray);
       break;
     default:
       return;
