@@ -1,5 +1,7 @@
 # vc.ru test assigment
 
+[See project](https://titarenkoeleonora.github.io/test_vc_deploy/)
+
 🛠 **Technologies used:** HTML/SCSS, JavaScript (ES6), Webpack.
 
 ## Install
